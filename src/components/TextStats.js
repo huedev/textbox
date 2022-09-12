@@ -6,7 +6,7 @@ const TextStats = () => {
   const [charactersExcludingSpaces, setCharactersExcludingSpaces] = useState(0);
   const [sentences, setSentences] = useState(0);
   const [paragraphs, setParagraphs] = useState(0);
-  const [lines, setLines] = useState(0);
+  const [lines, setLines] = useState(1);
 
   function populateStats(event) {
     setWords(getWords(event.target.value));
@@ -21,7 +21,7 @@ const TextStats = () => {
     if (!str) {
       return 0;
     } 
-    return str.replace(/['";:,.?¿\-!¡]+/g, '').match(/\S+/g).length;
+    return (str.replace(/['";:,.?¿\-!¡]+/g, '').match(/\S+/g) || []).length;
   }
 
   function getCharacters(str) {
@@ -33,27 +33,24 @@ const TextStats = () => {
   }
 
   function getSentences(str) {
-    if (str.match(/[\w|)][.?!]+(\s|$)/g) == null) {
+    if (!str) {
       return 0;
     }
-    return str.match(/[\w|)][.?!]+(\s|$)/g).length;
+    return (str.match(/[\w|)][.?!]+(\s|$)/g) || []).length;
   }
 
   function getParagraphs(str) {
     if (!str) {
       return 0;
     }
-    if (str.match(/\n+/g) == null) {
-      return 1;
-    }
-    return str.match(/\n+/g).length + 1;
+    return (str.match(/\n+/g) || []).length + 1;
   }
 
   function getLines(str) {
-    if ((str.match(/\n/g) || '') == null || str.length === 0) {
-      return 0;
+    if (!str) {
+      return 1;
     }
-    return (str.match(/\n/g) || '').length + 1;
+    return (str.match(/\n/g) || []).length + 1;
   }
 
   return (

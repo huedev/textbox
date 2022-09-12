@@ -5,6 +5,7 @@ const TextStats = () => {
   const [characters, setCharacters] = useState(0);
   const [charactersExcludingSpaces, setCharactersExcludingSpaces] = useState(0);
   const [sentences, setSentences] = useState(0);
+  const [paragraphs, setParagraphs] = useState(0);
   const [lines, setLines] = useState(0);
 
   function populateStats(event) {
@@ -12,12 +13,15 @@ const TextStats = () => {
     setCharacters(getCharacters(event.target.value));
     setCharactersExcludingSpaces(getCharactersExcludingSpaces(event.target.value));
     setSentences(getSentences(event.target.value));
+    setParagraphs(getParagraphs(event.target.value));
     setLines(getLines(event.target.value));
   }
 
   function getWords(str) {
-    const arr = str.split(' ');
-    return arr.filter(word => word !== '').length;
+    if (!str) {
+      return 0;
+    } 
+    return str.replace(/['";:,.?¿\-!¡]+/g, '').match(/\S+/g).length;
   }
 
   function getCharacters(str) {
@@ -31,17 +35,25 @@ const TextStats = () => {
   function getSentences(str) {
     if (str.match(/[\w|)][.?!]+(\s|$)/g) == null) {
       return 0;
-    } else {
-      return str.match(/[\w|)][.?!]+(\s|$)/g).length;
     }
+    return str.match(/[\w|)][.?!]+(\s|$)/g).length;
+  }
+
+  function getParagraphs(str) {
+    if (!str) {
+      return 0;
+    }
+    if (str.match(/\n+/g) == null) {
+      return 1;
+    }
+    return str.match(/\n+/g).length + 1;
   }
 
   function getLines(str) {
     if ((str.match(/\n/g) || '') == null || str.length === 0) {
       return 0;
-    } else {
-      return (str.match(/\n/g) || '').length + 1;
     }
+    return (str.match(/\n/g) || '').length + 1;
   }
 
   return (
@@ -62,6 +74,8 @@ const TextStats = () => {
           <dd>{charactersExcludingSpaces}</dd>
           <dt className="font-semibold">Sentences</dt>
           <dd>{sentences}</dd>
+          <dt className="font-semibold">Paragraphs</dt>
+          <dd>{paragraphs}</dd>
           <dt className="font-semibold">Lines</dt>
           <dd>{lines}</dd>
         </dl>

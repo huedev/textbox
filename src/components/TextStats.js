@@ -57,28 +57,42 @@ const TextStats = () => {
   }
 
   return (
-    <main className="max-w-7xl mx-auto">
-      <div className="border border-transparent xl:border-slate-300 rounded-md p-6">
-        <h2 className="text-xl mb-6">Word Count</h2>
+    <main className="p-4">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-xl mb-6 font-semibold">Word Count</h2>
+        <label htmlFor="input">Input</label>
         <textarea
-            className="w-full h-64 p-2 shadow-sm border border-slate-300 rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+            id="input"
+            className="w-full h-64 p-2 mt-1 mb-6 shadow-sm border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             spellCheck="false"
             onChange={populateStats}>
         </textarea>
-        <dl className="gap-x-2 gap-y-1">
-          <dt className="font-semibold">Words</dt>
-          <dd>{words}</dd>
-          <dt className="font-semibold">Characters</dt>
-          <dd>{characters}</dd>
-          <dt className="font-semibold">Characters (excluding spaces)</dt>
-          <dd>{charactersExcludingSpaces}</dd>
-          <dt className="font-semibold">Sentences</dt>
-          <dd>{sentences}</dd>
-          <dt className="font-semibold">Paragraphs</dt>
-          <dd>{paragraphs}</dd>
-          <dt className="font-semibold">Lines</dt>
-          <dd>{lines}</dd>
-        </dl>
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-100 rounded-lg p-4">
+          <div className="flex justify-between px-3 py-2">
+            <span className="font-semibold">Words</span>
+            <span>{words}</span>
+          </div>
+          <div className="flex justify-between px-3 py-2 border-t border-slate-300 sm:border-t-0">
+            <span className="font-semibold">Sentences</span>
+            <span>{sentences}</span>
+          </div>
+          <div className="flex justify-between px-3 py-2 border-t border-slate-300">
+            <span className="font-semibold">Characters</span>
+            <span>{characters}</span>
+          </div>
+          <div className="flex justify-between px-3 py-2 border-t border-slate-300">
+            <span className="font-semibold">Characters (without spaces)</span>
+            <span>{charactersExcludingSpaces}</span>
+          </div>
+          <div className="flex justify-between px-3 py-2 border-t border-slate-300">
+            <span className="font-semibold">Paragraphs</span>
+            <span>{paragraphs}</span>
+          </div>
+          <div className="flex justify-between px-3 py-2 border-t border-slate-300">
+            <span className="font-semibold">Lines</span>
+            <span>{lines}</span>
+          </div>
+        </div>
       </div>
     </main>
   );

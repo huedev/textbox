@@ -67,28 +67,28 @@ const TextStats = () => {
             spellCheck="false"
             onChange={populateStats}>
         </textarea>
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-indigo-100 rounded-lg p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-100 shadow-inner rounded-lg p-4">
           <div className="flex justify-between px-3 py-2">
             <span className="font-semibold">Words</span>
             <span>{words}</span>
           </div>
-          <div className="flex justify-between px-3 py-2 border-t border-indigo-200 sm:border-t-0">
+          <div className="flex justify-between px-3 py-2 border-t border-slate-200 sm:border-t-0">
             <span className="font-semibold">Sentences</span>
             <span>{sentences}</span>
           </div>
-          <div className="flex justify-between px-3 py-2 border-t border-indigo-200">
+          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
             <span className="font-semibold">Characters</span>
             <span>{characters}</span>
           </div>
-          <div className="flex justify-between px-3 py-2 border-t border-indigo-200">
+          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
             <span className="font-semibold">Characters (without spaces)</span>
             <span>{charactersExcludingSpaces}</span>
           </div>
-          <div className="flex justify-between px-3 py-2 border-t border-indigo-200">
+          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
             <span className="font-semibold">Paragraphs</span>
             <span>{paragraphs}</span>
           </div>
-          <div className="flex justify-between px-3 py-2 border-t border-indigo-200">
+          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
             <span className="font-semibold">Lines</span>
             <span>{lines}</span>
           </div>

@@ -1,9 +1,18 @@
 import { useState } from "react"
 
+const Stat = (props) => {
+  return (
+    <div className="flex justify-between space-x-3 px-3 py-2 border-b [&:nth-last-child(-n+1)]:border-transparent sm:[&:nth-last-child(-n+2)]:border-transparent border-slate-200">
+      <span className="font-semibold">{props.label}</span>
+      <span>{props.data}</span>
+    </div>
+  )
+}
+
 const WordCount = () => {
   const [words, setWords] = useState(0);
   const [characters, setCharacters] = useState(0);
-  const [charactersExcludingSpaces, setCharactersExcludingSpaces] = useState(0);
+  const [charactersWithoutSpaces, setcharactersWithoutSpaces] = useState(0);
   const [sentences, setSentences] = useState(0);
   const [paragraphs, setParagraphs] = useState(0);
   const [lines, setLines] = useState(1);
@@ -11,7 +20,7 @@ const WordCount = () => {
   function populateStats(event) {
     setWords(getWords(event.target.value));
     setCharacters(getCharacters(event.target.value));
-    setCharactersExcludingSpaces(getCharactersExcludingSpaces(event.target.value));
+    setcharactersWithoutSpaces(getcharactersWithoutSpaces(event.target.value));
     setSentences(getSentences(event.target.value));
     setParagraphs(getParagraphs(event.target.value));
     setLines(getLines(event.target.value));
@@ -28,7 +37,7 @@ const WordCount = () => {
     return str.length;
   }
 
-  function getCharactersExcludingSpaces(str) {
+  function getcharactersWithoutSpaces(str) {
     return str.replace(/\s+/g, '').length;
   }
 
@@ -54,41 +63,23 @@ const WordCount = () => {
   }
 
   return (
-    <main className="px-4 py-8">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-xl mb-6 font-semibold">Word Count</h2>
-        <label htmlFor="input" className="text-slate-600">Input</label>
+    <main className="py-8">
+      <div className="bg-white rounded-none shadow lg:rounded-lg max-w-5xl mx-auto p-8">
+        <h2 className="text-xl font-semibold">Word Count</h2>
+        <label htmlFor="input" className="inline-block mt-6 text-slate-600">Input</label>
         <textarea
             id="input"
-            className="w-full h-80 p-2 mt-1 mb-6 shadow-sm border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+            className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             spellCheck="false"
             onChange={populateStats}>
         </textarea>
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-100 shadow-inner rounded-lg p-4">
-          <div className="flex justify-between px-3 py-2">
-            <span className="font-semibold">Words</span>
-            <span>{words}</span>
-          </div>
-          <div className="flex justify-between px-3 py-2 border-t border-slate-200 sm:border-t-0">
-            <span className="font-semibold">Sentences</span>
-            <span>{sentences}</span>
-          </div>
-          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
-            <span className="font-semibold">Characters</span>
-            <span>{characters}</span>
-          </div>
-          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
-            <span className="font-semibold">Characters (without spaces)</span>
-            <span>{charactersExcludingSpaces}</span>
-          </div>
-          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
-            <span className="font-semibold">Paragraphs</span>
-            <span>{paragraphs}</span>
-          </div>
-          <div className="flex justify-between px-3 py-2 border-t border-slate-200">
-            <span className="font-semibold">Lines</span>
-            <span>{lines}</span>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-100 shadow-inner rounded-lg p-4 mt-6">
+          <Stat label="Words" data={words} />
+          <Stat label="Sentences" data={sentences} />
+          <Stat label="Characters" data={characters} />
+          <Stat label="Characters (without spaces)" data={charactersWithoutSpaces} />
+          <Stat label="Paragraphs" data={paragraphs} />
+          <Stat label="Lines" data={lines} />
         </div>
       </div>
     </main>

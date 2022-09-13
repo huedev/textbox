@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const TextStats = () => {
+const WordCount = () => {
   const [words, setWords] = useState(0);
   const [characters, setCharacters] = useState(0);
   const [charactersExcludingSpaces, setCharactersExcludingSpaces] = useState(0);
@@ -54,7 +54,7 @@ const TextStats = () => {
   }
 
   return (
-    <main className="p-4">
+    <main className="px-4 py-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-xl mb-6 font-semibold">Word Count</h2>
         <label htmlFor="input" className="text-slate-600">Input</label>
@@ -95,4 +95,4 @@ const TextStats = () => {
   );
 }
 
-export default TextStats
+export default WordCount

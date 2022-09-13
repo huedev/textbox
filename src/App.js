@@ -3,6 +3,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import WordCount from './components/WordCount'
 import About from './components/About'
+import ConvertCase from './components/ConvertCase'
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path='/' element={<WordCount />} />
+        <Route path='/convert-case' element={<ConvertCase />} />
         <Route path='/about' element={<About />} />
       </Routes>
       <Footer />

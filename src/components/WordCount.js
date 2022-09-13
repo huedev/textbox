@@ -66,12 +66,13 @@ const WordCount = () => {
     <main className="py-8">
       <div className="bg-white rounded-none shadow lg:rounded-lg max-w-5xl mx-auto p-8">
         <h2 className="text-xl font-semibold">Word Count</h2>
-        <label htmlFor="input" className="inline-block mt-6 text-slate-600">Input</label>
+        <label htmlFor="input" className="inline-block mt-6 text-slate-600 sm:text-sm">Input</label>
         <textarea
-            id="input"
-            className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-            spellCheck="false"
-            onChange={populateStats}>
+          id="input"
+          className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 sm:text-sm"
+          spellCheck="false"
+          onChange={populateStats}
+        >
         </textarea>
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-100 shadow-inner rounded-lg p-4 mt-6">
           <Stat label="Words" data={words} />

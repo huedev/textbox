@@ -1,9 +1,14 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
-export default function MyListbox(props) {
-  const [selected, setSelected] = useState(props.data[0])
+const MyListbox = (props) => {
+  const [selected, setSelected] = useState(props.data[0]);
+  const onChange = props.onChange;
+
+  useEffect(() => {
+    onChange(selected)
+  }, [onChange, selected])
 
   return (
     <div className="w-72">
@@ -12,8 +17,8 @@ export default function MyListbox(props) {
           {props.label}
         </Listbox.Label>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default border border-slate-300 rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-300 sm:text-sm">
-            <span className="block truncate">{selected.name}</span>
+          <Listbox.Button className="relative w-full cursor-default border border-slate-300 rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 sm:text-sm">
+            <span className="block truncate">{selected}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-gray-400"
@@ -42,10 +47,10 @@ export default function MyListbox(props) {
                     <>
                       <span
                         className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
+                          selected ? 'font-semibold' : 'font-normal'
                         }`}
                       >
-                        {item.name}
+                        {item}
                       </span>
                       {selected ? (
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-indigo-600">
@@ -63,3 +68,5 @@ export default function MyListbox(props) {
     </div>
   )
 }
+
+export default MyListbox

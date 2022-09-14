@@ -2,7 +2,7 @@ import { useState } from "react"
 
 const Stat = (props) => {
   return (
-    <div className="flex justify-between space-x-3 px-3 py-2 border-b [&:nth-last-child(-n+1)]:border-transparent sm:[&:nth-last-child(-n+2)]:border-transparent border-slate-200">
+    <div className="flex justify-between space-x-3 px-3 py-2 border-b [&:nth-last-child(-n+1)]:border-transparent sm:[&:nth-last-child(-n+2)]:border-transparent border-slate-200 sm:text-sm">
       <span className="font-semibold">{props.label}</span>
       <span>{props.data}</span>
     </div>
@@ -74,7 +74,7 @@ const WordCount = () => {
           onChange={populateStats}
         >
         </textarea>
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-100 shadow-inner rounded-lg p-4 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-100 shadow-inner rounded-lg p-4 mt-4">
           <Stat label="Words" data={words} />
           <Stat label="Sentences" data={sentences} />
           <Stat label="Characters" data={characters} />

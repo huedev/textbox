@@ -68,8 +68,7 @@ const WordCount = () => {
         <h2 className="text-xl font-semibold">Word Count</h2>
         <label htmlFor="input" className="inline-block mt-6 text-slate-600 sm:text-sm">Input</label>
         <textarea
-          id="input"
-          className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 sm:text-sm"
+          className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
           spellCheck="false"
           onChange={populateStats}
         >

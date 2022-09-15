@@ -1,4 +1,5 @@
 import MyListbox from './MyListbox'
+import Button from './Button';
 import { useState, createRef } from "react"
 
 const ConvertCase = () => {
@@ -50,11 +51,11 @@ const ConvertCase = () => {
 
   function startCase(str) {
     const input = str.toLowerCase();
-    const words = input.split(" ");
+    const words = (input.match(/\S+\s*/g) || []);
     for (let i = 0; i < words.length; i++) {
       words[i] = words[i].charAt(0).toUpperCase() + words[i].substr(1);
     }
-    return words.join(" ");
+    return words.join("");
   }
 
   function randomizeCase(str) {
@@ -82,22 +83,28 @@ const ConvertCase = () => {
         <div className="flex mt-6">
           <MyListbox label="Conversion" data={options} onChange={handleConversionChange} />
         </div>
-        <label htmlFor="input" className="inline-block mt-6 text-slate-600 text-sm">Input/Output</label>
+        <label htmlFor="input" className="inline-block mt-6 text-slate-600 sm:text-sm">Input/Output</label>
         <textarea
+          id="input"
           ref={textInput}
           className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
           spellCheck="false"
         >
         </textarea>
         <div className="flex flex-row-reverse mt-4">
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-500 py-2 px-4 sm:text-sm font-medium text-white shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            onClick={convert}
-          >
-            Convert
-          </button>
+          <Button name="Convert" onClick={convert} />
         </div>
+      </div>
+      <div className="bg-white rounded-none shadow lg:rounded-lg max-w-5xl mx-auto p-8 mt-8">
+        <h2 className="text-xl font-semibold">About</h2>
+        <p className="leading-7 mt-6">There are several case conversion styles to choose from:</p>
+        <ul className="list-disc list-inside leading-7 mt-6">
+          <li><strong className="font-semibold">Uppercase</strong> - A style with all capital letters.</li>
+          <li><strong className="font-semibold">Lowercase</strong> - A style with all lowercase letters.</li>
+          <li><strong className="font-semibold">Sentence Case</strong> - A style where the first letter of each sentence is capitalized.</li>
+          <li><strong className="font-semibold">Start Case</strong> - A style where the first letter of each word is capitalized.</li>
+          <li><strong className="font-semibold">Random Case</strong> - A style where each letter is randomly set to capital or lowercase. Just for fun!</li>
+        </ul>
       </div>
     </main>
   )

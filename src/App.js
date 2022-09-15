@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import ToolList from './components/ToolList'
+import SortList from './components/SortList'
+import ConvertCase from './components/ConvertCase'
 import WordCount from './components/WordCount'
 import About from './components/About'
-import ConvertCase from './components/ConvertCase'
-import ToolList from './components/ToolList'
 
 const App = () => {
   return (
@@ -12,8 +13,9 @@ const App = () => {
       <Header />
       <Routes>
       <Route path='/' element={<ToolList />} />
-        <Route path='/word-count' element={<WordCount />} />
+        <Route path='/sort-list' element={<SortList />} />
         <Route path='/convert-case' element={<ConvertCase />} />
+        <Route path='/word-count' element={<WordCount />} />
         <Route path='/about' element={<About />} />
       </Routes>
       <Footer />

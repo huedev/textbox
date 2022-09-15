@@ -98,7 +98,7 @@ const ConvertCase = () => {
       <div className="bg-white rounded-none shadow lg:rounded-lg max-w-5xl mx-auto p-8 mt-8">
         <h2 className="text-xl font-semibold">About</h2>
         <p className="leading-7 mt-6">There are several case conversion styles to choose from:</p>
-        <ul className="list-disc list-inside leading-7 mt-6">
+        <ul className="list-disc list-inside leading-7 -indent-4 ml-4 mt-6">
           <li><strong className="font-semibold">Uppercase</strong> - A style with all capital letters.</li>
           <li><strong className="font-semibold">Lowercase</strong> - A style with all lowercase letters.</li>
           <li><strong className="font-semibold">Sentence Case</strong> - A style where the first letter of each sentence is capitalized.</li>

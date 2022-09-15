@@ -42,7 +42,7 @@ const ConvertCase = () => {
 
   function sentenceCase(str) {
     const input = str.toLowerCase();
-    const sentences = input.match(/[^.?!]+[.!?]+[\])'"`’”]*\s+|$|.+/g);
+    const sentences = input.match(/[^.?!]+[.!?]+[\])'"`’”]*\s*|$|.+/g);
     for (let i = 0; i < sentences.length; i++) {
       sentences[i] = sentences[i].charAt(0).toUpperCase() + sentences[i].substr(1);
     }
@@ -83,11 +83,11 @@ const ConvertCase = () => {
         <div className="flex mt-6">
           <MyListbox label="Conversion" data={options} onChange={handleConversionChange} />
         </div>
-        <label htmlFor="input" className="inline-block mt-6 text-slate-600 sm:text-sm">Input/Output</label>
+        <label htmlFor="input" className="inline-block mt-6 text-slate-600 text-sm">Input/Output</label>
         <textarea
           id="input"
           ref={textInput}
-          className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
+          className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 text-sm"
           spellCheck="false"
         >
         </textarea>

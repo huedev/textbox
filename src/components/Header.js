@@ -3,7 +3,7 @@ import { WrenchScrewdriverIcon } from '@heroicons/react/24/solid'
 
 const Header = () => {
   return (
-    <header className="bg-indigo-500 px-4 py-3">
+    <header className="sticky top-0 z-30 bg-indigo-500 shadow-lg px-4 py-3">
       <div className="max-w-5xl mx-auto">
         <div className="flex">
           <Link to="/" className="flex items-center text-2xl text-white">

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className="px-4 text-slate-600 sm:text-sm">
+    <footer className="px-4 text-slate-600 text-sm">
       <div className="border-t border-slate-300 max-w-5xl mx-auto py-6">
         <div className="flex justify-between">
           <span>&copy; 2022 huedev</span>

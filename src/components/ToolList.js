@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom"
 import ToolListItem from "./ToolListItem"
+import { ArrowPathIcon } from "@heroicons/react/24/outline"
+import { CalculatorIcon } from "@heroicons/react/24/outline"
 
 const ToolList = () => {
   return (
@@ -8,11 +9,13 @@ const ToolList = () => {
         <ToolListItem
           destination="/word-count"
           name="Word Count"
+          icon={<CalculatorIcon />}
           description="See how many words, paragraphs, and characters you have written."
         />
         <ToolListItem
           destination="/convert-case"
           name="Convert Case"
+          icon={<ArrowPathIcon />}
           description="Change the letter case of some text to uppercase, lowercase, sentence case, start case, and random case."
         />
       </div>

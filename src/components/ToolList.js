@@ -7,7 +7,7 @@ const ToolList = () => {
   return (
     <main className="px-4 py-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="uppercase font-semibold text-slate-600 tracking-wide">Basic Tools</h2>
+        <h2 className="uppercase font-semibold text-slate-600 dark:text-slate-400 tracking-wide">Basic Tools</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
         <ToolListItem
             destination="/sort-list"

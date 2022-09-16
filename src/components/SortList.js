@@ -95,26 +95,24 @@ const SortList = () => {
   }
 
   return (
-    <main className="py-8">
-      <div className="bg-white rounded-none shadow lg:rounded-lg max-w-5xl mx-auto p-8">
-        <h2 className="text-xl font-semibold">Sort List</h2>
+    <main className="px-4 py-8">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-2xl font-semibold">Sort List</h2>
         <div className="flex mt-6">
           <MyListbox label="Sort" data={options} onChange={handleSortChange} />
         </div>
-        <label htmlFor="input" className="inline-block mt-6 text-slate-600 text-sm">Input/Output</label>
+        <label htmlFor="input" className="inline-block mt-6 text-slate-600 dark:text-slate-400 text-sm">Input/Output</label>
         <textarea
           id="input"
           ref={textInput}
-          className="w-full h-80 p-2 mt-1 shadow border border-slate-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 text-sm"
+          className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-none dark:highlight-white/5 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 text-sm"
           spellCheck="false"
         >
         </textarea>
         <div className="flex flex-row-reverse mt-4">
           <Button name="Sort" onClick={sort} />
         </div>
-      </div>
-      <div className="bg-white rounded-none shadow lg:rounded-lg max-w-5xl mx-auto p-8 mt-8">
-        <h2 className="text-xl font-semibold">About</h2>
+        <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several sorting methods to choose from:</p>
         <ul className="list-disc list-inside leading-7 -indent-4 ml-4 mt-6">
           <li><strong className="font-semibold">Natural</strong> - A human-friendly sorting method that works well with numbered lists, as it treats multi-digit numbers as a single number. For example, 2 would appear before 10 in an ascending list.</li>

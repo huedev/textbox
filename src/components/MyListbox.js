@@ -17,11 +17,11 @@ const MyListbox = (props) => {
           {props.label}
         </Listbox.Label>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default border border-slate-300 dark:border-none rounded-lg bg-white dark:bg-slate-800 py-2 pl-3 pr-10 text-left shadow dark:highlight-white/5 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 text-sm">
+          <Listbox.Button className="relative w-full cursor-default border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg bg-white dark:bg-slate-800 py-2 pl-3 pr-10 text-left shadow focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 text-sm">
             <span className="block truncate">{selected}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
-                className="h-5 w-5 text-slate-400"
+                className="h-5 w-5 text-slate-400 dark:text-slate-600"
                 aria-hidden="true"
               />
             </span>

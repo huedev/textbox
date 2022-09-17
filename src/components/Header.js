@@ -6,7 +6,7 @@ const Header = () => {
   const [currentTheme, setTheme] = useDarkMode();
 
   return (
-    <header className="sticky top-0 z-30 bg-indigo-500 dark:bg-slate-800 shadow-lg px-4 py-3">
+    <header className="sticky top-0 z-30 bg-indigo-500 dark:bg-indigo-700 shadow-lg px-4 py-3">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between text-white dark:text-slate-200">
           <Link to="/" className="flex items-center text-2xl hover:text-indigo-100 dark:hover:text-slate-300">

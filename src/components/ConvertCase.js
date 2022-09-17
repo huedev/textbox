@@ -87,7 +87,7 @@ const ConvertCase = () => {
         <textarea
           id="input"
           ref={textInput}
-          className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-none dark:highlight-white/5 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 text-sm"
+          className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
           spellCheck="false"
         >
         </textarea>

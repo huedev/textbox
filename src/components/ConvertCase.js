@@ -9,6 +9,7 @@ const ConvertCase = () => {
     "Lowercase",
     "Sentence Case",
     "Start Case",
+    "Invert Case",
     "Random Case",
   ];
 
@@ -31,6 +32,9 @@ const ConvertCase = () => {
         break;
       case "Start Case":
         textInput.current.value = startCase(textInput.current.value);
+        break;
+      case "Invert Case":
+        textInput.current.value = invertCase(textInput.current.value);
         break;
       case "Random Case":
         textInput.current.value = randomizeCase(textInput.current.value);
@@ -56,6 +60,20 @@ const ConvertCase = () => {
       words[i] = words[i].charAt(0).toUpperCase() + words[i].substr(1);
     }
     return words.join("");
+  }
+
+  function invertCase(str) {
+    const output = [];
+    for (let i = 0; i < str.length; i++) {
+      let char = str.charAt(i);
+      if (char === char.toUpperCase()) {
+        char = char.toLowerCase();
+      } else {
+        char = char.toUpperCase();
+      }
+      output[i] = char;
+    }
+    return output.join("");
   }
 
   function randomizeCase(str) {
@@ -101,6 +119,7 @@ const ConvertCase = () => {
           <li><strong className="font-semibold">Lowercase</strong> - A style with all lowercase letters.</li>
           <li><strong className="font-semibold">Sentence Case</strong> - A style where the first letter of each sentence is capitalized.</li>
           <li><strong className="font-semibold">Start Case</strong> - A style where the first letter of each word is capitalized.</li>
+          <li><strong className="font-semibold">Invert Case</strong> - A style where lowercase letters made capitalized and capital letters are made lowercase.</li>
           <li><strong className="font-semibold">Random Case</strong> - A style where each letter is randomly set to capital or lowercase. Just for fun!</li>
         </ul>
       </div>

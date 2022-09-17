@@ -87,7 +87,7 @@ const SortList = () => {
 
   function sortRandom(str) {
     const arr = str.split(/\r?\n/).filter(element => element);
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = 0; i < arr.length; i++) {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
@@ -101,14 +101,15 @@ const SortList = () => {
         <div className="flex mt-6">
           <MyListbox label="Sort" data={options} onChange={handleSortChange} />
         </div>
-        <label htmlFor="input" className="inline-block mt-6 text-slate-600 dark:text-slate-400 text-sm">Input/Output</label>
-        <textarea
-          id="input"
-          ref={textInput}
-          className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-          spellCheck="false"
-        >
-        </textarea>
+        <label className="block mt-6 text-sm">
+          <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
+          <textarea
+            ref={textInput}
+            className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+            spellCheck="false"
+          >
+          </textarea>
+        </label>
         <div className="flex flex-row-reverse mt-4">
           <Button name="Sort" onClick={sort} />
         </div>

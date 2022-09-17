@@ -5,6 +5,7 @@ import ToolList from './components/ToolList'
 import SortList from './components/SortList'
 import ConvertCase from './components/ConvertCase'
 import WordCount from './components/WordCount'
+import PrefixSuffix from './components/PrefixSuffix'
 import About from './components/About'
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/sort-list' element={<SortList />} />
         <Route path='/convert-case' element={<ConvertCase />} />
         <Route path='/word-count' element={<WordCount />} />
+        <Route path='/prefix-suffix' element={<PrefixSuffix />} />
         <Route path='/about' element={<About />} />
       </Routes>
       <Footer />

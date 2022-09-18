@@ -3,7 +3,7 @@ import { Switch } from '@headlessui/react'
 
 const MySwitch = (props) => {
   const [enabled, setEnabled] = useState(props.default);
-  const onChange = props.onChange;
+  const {onChange} = props;
 
   useEffect(() => {
     onChange(enabled)

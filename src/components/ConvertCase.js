@@ -47,50 +47,45 @@ const ConvertCase = () => {
   function sentenceCase(str) {
     const input = str.toLowerCase();
     const sentences = input.match(/[^.?!]+[.!?]+[\])'"`’”]*\s*|$|.+/g);
-    for (let i = 0; i < sentences.length; i++) {
-      sentences[i] = sentences[i].charAt(0).toUpperCase() + sentences[i].substr(1);
-    }
-    return sentences.join("");
+    const output = sentences.map((sentence) => {
+      return sentence.charAt(0).toUpperCase() + sentence.substr(1);
+    });
+    return output.join("");
   }
 
   function startCase(str) {
     const input = str.toLowerCase();
     const words = (input.match(/\S+\s*/g) || []);
-    for (let i = 0; i < words.length; i++) {
-      words[i] = words[i].charAt(0).toUpperCase() + words[i].substr(1);
-    }
-    return words.join("");
+    const output = words.map((word) => {
+      return word.charAt(0).toUpperCase() + word.substr(1);
+    });
+    return output.join("");
   }
 
   function invertCase(str) {
-    const output = [];
-    for (let i = 0; i < str.length; i++) {
-      let char = str.charAt(i);
+    const arr = str.split('');
+    const output = arr.map((char) => {
       if (char === char.toUpperCase()) {
-        char = char.toLowerCase();
-      } else {
-        char = char.toUpperCase();
+        return char.toLowerCase();
       }
-      output[i] = char;
-    }
+      return char = char.toUpperCase();
+    });
     return output.join("");
   }
 
   function randomizeCase(str) {
-    const output = [];
-    for (let i = 0; i < str.length; i++) {
+    const arr = str.split('');
+    const output = arr.map((char) => {
       const coinflip = Math.floor(Math.random() * 2);
       switch (coinflip) {
         case 0:
-          output[i] = str[i].toUpperCase();
-          break;
+          return char.toUpperCase();
         case 1:
-          output[i] = str[i].toLowerCase();
-          break;
+          return char.toLowerCase();
         default:
-          output[i] = str[i];
+          return char;
       }
-    }
+    });
     return output.join("");
   }
   

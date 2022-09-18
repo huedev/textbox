@@ -16,12 +16,13 @@ const PrefixSuffix = () => {
   function applyPrefixSuffix() {
     const str = textInput.current.value;
     const arr = str.split(/\r?\n/);
-    for (let i = 0; i < arr.length; i++) {
-      if ((skipEmptyLines && arr[i].length) || !skipEmptyLines) {
-        arr[i] = prefixInput.current.value + arr[i] + suffixInput.current.value;
+    const output = arr.map((line) => {
+      if ((skipEmptyLines && line.length) || !skipEmptyLines) {
+        return `${prefixInput.current.value}${line}${suffixInput.current.value}`;
       }
-    }
-    textInput.current.value = arr.join('\r\n');
+      return line;
+    });
+    textInput.current.value = output.join('\r\n');
   }
 
   return (

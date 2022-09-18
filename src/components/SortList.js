@@ -74,9 +74,9 @@ const SortList = () => {
   function sortLength(str, reverse) {
     const arr = str.split(/\r?\n/).filter(element => element);
     if (reverse) {
-      return arr.sort((a,b) => b.length - a.length || b.localeCompare(a)).join('\r\n');
+      return arr.sort((a, b) => b.length - a.length || b.localeCompare(a)).join('\r\n');
     } else {
-      return arr.sort((a,b) => a.length - b.length || a.localeCompare(b)).join('\r\n');
+      return arr.sort((a, b) => a.length - b.length || a.localeCompare(b)).join('\r\n');
     }
   }
 

@@ -13,7 +13,7 @@ const PrefixSuffix = () => {
     setSkipEmptyLines(value);
   }
 
-  function applyPrefixSuffix() {
+  function addPrefixSuffix() {
     const str = textInput.current.value;
     const arr = str.split(/\r?\n/);
     const output = arr.map((line) => {
@@ -60,7 +60,7 @@ const PrefixSuffix = () => {
           </textarea>
         </label>
         <div className="flex flex-row-reverse mt-4">
-          <Button name="Apply" onClick={applyPrefixSuffix} />
+          <Button name="Add" onClick={addPrefixSuffix} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">

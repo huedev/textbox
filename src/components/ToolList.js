@@ -11,19 +11,19 @@ const ToolList = () => {
             destination="/sort-list"
             name="Sort List"
             icon={<ArrowsUpDownIcon />}
-            description="Sort a list alphabetically, naturally, or by character length, as well as reverse or randomly shuffle a list."
+            description="Sort items in a list using various sorting methods."
           />
           <ToolListItem
             destination="/convert-case"
             name="Convert Case"
             icon={<ArrowPathIcon />}
-            description="Change text letter case to uppercase, lowercase, sentence case, start case, invert case, or random case."
+            description="Convert text letter case to several different formats."
           />
           <ToolListItem
             destination="/word-count"
             name="Word Count"
             icon={<CalculatorIcon />}
-            description="See how many words, sentences, paragraphs, lines, and characters you have written."
+            description="Enter some text and get a word count and other info."
           />
         </div>
         <h2 className="uppercase font-semibold text-slate-600 dark:text-slate-400 tracking-wide mt-8">Text Manipulation</h2>

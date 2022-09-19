@@ -118,6 +118,27 @@ const ConvertCase = () => {
           <li><strong className="font-semibold">Invert Case</strong> - A style where lowercase letters made capitalized and capital letters are made lowercase.</li>
           <li><strong className="font-semibold">Random Case</strong> - A style where each letter is randomly set to capital or lowercase. Just for fun!</li>
         </ul>
+        <h3 className="text-xl font-semibold mt-8">Examples</h3>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Uppercase</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.
+        </pre>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Lowercase</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          the quick brown fox jumps over the lazy dog.
+        </pre>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Sentence Case</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          The quick brown fox jumps over the lazy dog.
+        </pre>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Start Case</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          The Quick Brown Fox Jumps Over The Lazy Dog.
+        </pre>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Random Case</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          thE qUIck BrOwN FOx JumPs OVeR the lAZY Dog.
+        </pre>
       </div>
     </main>
   )

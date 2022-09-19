@@ -122,6 +122,25 @@ const SortList = () => {
           <li><strong className="font-semibold">Reverse Order</strong> - A sorting method that simply reverses the order of the list.</li>
           <li><strong className="font-semibold">Random Order</strong> - A sorting method that randomly shuffles the order of the list. Just for fun!</li>
         </ul>
+        <h3 className="text-xl font-semibold mt-8">Examples</h3>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Natural</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          A1<br />
+          A2<br />
+          A10
+        </pre>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Alphabetical</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          A1<br />
+          A10<br />
+          A2
+        </pre>
+        <p className="leading-7 mt-6"><strong className="font-semibold">Length</strong></p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          A<br />
+          AA<br />
+          AAA
+        </pre>
       </div>
     </main>
   )

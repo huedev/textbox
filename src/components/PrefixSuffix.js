@@ -64,9 +64,33 @@ const PrefixSuffix = () => {
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">
-          Add the desired prefix at the start of each line and the desired suffix at the end of each line.<br />
-          If <strong className="font-semibold">Skip blank lines</strong> is enabled, the prefix and suffix will only be added to lines with text.
+          Add the desired prefix at the start of each line and the desired suffix at the end of each line.
         </p>
+        <h3 className="text-xl font-semibold mt-8">Examples</h3>
+        <p className="leading-7 mt-6">
+          If <strong className="font-semibold">Skip blank lines</strong> is enabled, the prefix and suffix will only be added to lines with text.<br />
+          Prefix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;li&gt;</code> and suffix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;/li&gt;</code>
+        </p>
+        <p className="leading-7 mt-6">
+          Enabled:
+        </p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          &lt;li&gt;Milk&lt;/li&gt;<br />
+          <br />
+          &lt;li&gt;Eggs&lt;/li&gt;<br />
+          <br />
+          &lt;li&gt;Bread&lt;/li&gt;
+        </pre>
+        <p className="leading-7 mt-6">
+          Disabled:
+        </p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          &lt;li&gt;Milk&lt;/li&gt;<br />
+          &lt;li&gt;&lt;/li&gt;<br />
+          &lt;li&gt;Eggs&lt;/li&gt;<br />
+          &lt;li&gt;&lt;/li&gt;<br />
+          &lt;li&gt;Bread&lt;/li&gt;
+        </pre>
       </div>
     </main>
   )

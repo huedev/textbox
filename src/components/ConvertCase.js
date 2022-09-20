@@ -1,6 +1,8 @@
 import MyListbox from './MyListbox'
 import Button from './Button';
+import StatusInfo from './StatusInfo';
 import { useState, createRef } from "react"
+import { useTimeoutFn } from 'react-use'
 
 const ConvertCase = () => {
   const textInput = createRef();
@@ -14,6 +16,8 @@ const ConvertCase = () => {
   ];
 
   const [conversion, setConversion] = useState(options[0]);
+  const [isStatusShowing, setIsStatusShowing] = useState(false);
+  const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 2000);
 
   function handleConversionChange(option) {
     setConversion(option);
@@ -42,6 +46,8 @@ const ConvertCase = () => {
       default:
         break;
     }
+    setIsStatusShowing(true);
+    resetIsStatusShowing();
   }
 
   function sentenceCase(str) {
@@ -105,8 +111,9 @@ const ConvertCase = () => {
           >
           </textarea>
         </label>
-        <div className="flex flex-row-reverse mt-4">
+        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse  mt-4">
           <Button name="Convert" onClick={convert} />
+          <StatusInfo isShowing={isStatusShowing} label={`${conversion} applied!`} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several case conversion styles to choose from:</p>

@@ -21,7 +21,7 @@ const MyListbox = (props) => {
             <span className="block truncate">{selected}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
-                className="h-5 w-5 text-slate-400 dark:text-slate-600"
+                className="h-5 w-5 text-slate-400 dark:text-slate-500"
                 aria-hidden="true"
               />
             </span>

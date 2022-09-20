@@ -69,10 +69,20 @@ const PrefixSuffix = () => {
         <h3 className="text-xl font-semibold mt-8">Examples</h3>
         <p className="leading-7 mt-6">
           If <strong className="font-semibold">Skip blank lines</strong> is enabled, the prefix and suffix will only be added to lines with text.<br />
-          Prefix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;li&gt;</code> and suffix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;/li&gt;</code>
+          Using prefix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;li&gt;</code> and suffix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;/li&gt;</code>.
         </p>
         <p className="leading-7 mt-6">
-          Enabled:
+          Before:
+        </p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          Milk<br />
+          <br />
+          Eggs<br />
+          <br />
+          Bread
+        </pre>
+        <p className="leading-7 mt-6">
+          <strong className="font-semibold">Skip blank lines</strong> enabled:
         </p>
         <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
           &lt;li&gt;Milk&lt;/li&gt;<br />
@@ -82,7 +92,7 @@ const PrefixSuffix = () => {
           &lt;li&gt;Bread&lt;/li&gt;
         </pre>
         <p className="leading-7 mt-6">
-          Disabled:
+          <strong className="font-semibold">Skip blank lines</strong> disabled:
         </p>
         <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
           &lt;li&gt;Milk&lt;/li&gt;<br />

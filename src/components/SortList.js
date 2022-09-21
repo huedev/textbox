@@ -1,6 +1,8 @@
 import MyListbox from './MyListbox'
 import Button from './Button';
+import StatusInfo from './StatusInfo';
 import { useState, createRef } from "react"
+import { useTimeoutFn } from 'react-use'
 
 const SortList = () => {
   const textInput = createRef();
@@ -16,6 +18,9 @@ const SortList = () => {
   ];
 
   const [sorting, setSorting] = useState(options[0]);
+  const [lastSortApplied, setLastSortApplied] = useState(options[0]);
+  const [isStatusShowing, setIsStatusShowing] = useState(false);
+  const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 5000);
 
   function handleSortChange(option) {
     setSorting(option);
@@ -50,6 +55,9 @@ const SortList = () => {
       default:
         break;
     }
+    setLastSortApplied(sorting);
+    setIsStatusShowing(true);
+    resetIsStatusShowing();
   }
 
   function sortNatural(str, reverse) {
@@ -110,8 +118,9 @@ const SortList = () => {
           >
           </textarea>
         </label>
-        <div className="flex flex-row-reverse mt-4">
+        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
           <Button name="Sort" onClick={sort} />
+          <StatusInfo isShowing={isStatusShowing} label={`Sorted by ${lastSortApplied}`} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several sorting methods to choose from:</p>

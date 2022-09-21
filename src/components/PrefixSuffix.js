@@ -1,6 +1,8 @@
 import Button from './Button';
-import { useState, createRef } from "react"
 import MySwitch from './MySwitch';
+import StatusInfo from './StatusInfo';
+import { useState, createRef } from "react"
+import { useTimeoutFn } from 'react-use'
 
 const PrefixSuffix = () => {
   const textInput = createRef();
@@ -8,6 +10,8 @@ const PrefixSuffix = () => {
   const suffixInput = createRef();
 
   const [skipEmptyLines, setSkipEmptyLines] = useState(true);
+  const [isStatusShowing, setIsStatusShowing] = useState(false);
+  const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 5000);
 
   function handleSkipEmptyLinesChange(value) {
     setSkipEmptyLines(value);
@@ -23,6 +27,8 @@ const PrefixSuffix = () => {
       return line;
     });
     textInput.current.value = output.join('\r\n');
+    setIsStatusShowing(true);
+    resetIsStatusShowing();
   }
 
   return (
@@ -59,8 +65,9 @@ const PrefixSuffix = () => {
           >
           </textarea>
         </label>
-        <div className="flex flex-row-reverse mt-4">
+        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
           <Button name="Add" onClick={addPrefixSuffix} />
+          <StatusInfo isShowing={isStatusShowing} label={`Prefix and suffix added`} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">

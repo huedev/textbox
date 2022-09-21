@@ -16,8 +16,9 @@ const ConvertCase = () => {
   ];
 
   const [conversion, setConversion] = useState(options[0]);
+  const [lastConversionApplied, setLastConversionApplied] = useState(options[0]);
   const [isStatusShowing, setIsStatusShowing] = useState(false);
-  const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 2000);
+  const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 5000);
 
   function handleConversionChange(option) {
     setConversion(option);
@@ -46,6 +47,7 @@ const ConvertCase = () => {
       default:
         break;
     }
+    setLastConversionApplied(conversion);
     setIsStatusShowing(true);
     resetIsStatusShowing();
   }
@@ -111,9 +113,9 @@ const ConvertCase = () => {
           >
           </textarea>
         </label>
-        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse  mt-4">
+        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
           <Button name="Convert" onClick={convert} />
-          <StatusInfo isShowing={isStatusShowing} label={`${conversion} applied!`} />
+          <StatusInfo isShowing={isStatusShowing} label={`Converted to ${lastConversionApplied}`} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several case conversion styles to choose from:</p>

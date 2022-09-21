@@ -4,11 +4,11 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const MyListbox = (props) => {
   const [selected, setSelected] = useState(props.data[0]);
-  const {onChange} = props;
+  const {handleChange} = props;
 
   useEffect(() => {
-    onChange(selected)
-  }, [onChange, selected])
+    handleChange(selected)
+  }, [handleChange, selected]);
 
   return (
     <div className="w-72">

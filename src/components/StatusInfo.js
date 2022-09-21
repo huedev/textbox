@@ -12,7 +12,7 @@ const StatusInfo = (props) => {
       leaveTo="opacity-0"
     >
       <span className="text-indigo-600 dark:text-indigo-400 text-sm">
-        {props.label}
+        {props.text}
       </span>
     </Transition>
   )

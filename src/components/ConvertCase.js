@@ -102,7 +102,7 @@ const ConvertCase = () => {
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold">Convert Case</h2>
         <div className="flex mt-6">
-          <MyListbox label="Conversion" data={options} onChange={handleConversionChange} />
+          <MyListbox label="Conversion" data={options} handleChange={handleConversionChange} />
         </div>
         <label className="block mt-6 text-sm">
           <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
@@ -114,8 +114,8 @@ const ConvertCase = () => {
           </textarea>
         </label>
         <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
-          <Button name="Convert" onClick={convert} />
-          <StatusInfo isShowing={isStatusShowing} label={`Converted to ${lastConversionApplied}`} />
+          <Button name="Convert" handleClick={convert} />
+          <StatusInfo isShowing={isStatusShowing} text={`Converted to ${lastConversionApplied}`} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several case conversion styles to choose from:</p>

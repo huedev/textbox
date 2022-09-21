@@ -107,7 +107,7 @@ const SortList = () => {
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold">Sort List</h2>
         <div className="flex mt-6">
-          <MyListbox label="Sort" data={options} onChange={handleSortChange} />
+          <MyListbox label="Sort" data={options} handleChange={handleSortChange} />
         </div>
         <label className="block mt-6 text-sm">
           <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
@@ -119,8 +119,8 @@ const SortList = () => {
           </textarea>
         </label>
         <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
-          <Button name="Sort" onClick={sort} />
-          <StatusInfo isShowing={isStatusShowing} label={`Sorted by ${lastSortApplied}`} />
+          <Button name="Sort" handleClick={sort} />
+          <StatusInfo isShowing={isStatusShowing} text={`Sorted by ${lastSortApplied}`} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several sorting methods to choose from:</p>

@@ -36,7 +36,7 @@ const PrefixSuffix = () => {
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold">Add Prefix &amp; Suffix</h2>
         <div className="flex flex-row-reverse mt-6">
-          <MySwitch label="Skip blank lines" default={skipEmptyLines} onChange={handleSkipEmptyLinesChange} />
+          <MySwitch label="Skip blank lines" default={skipEmptyLines} handleChange={handleSkipEmptyLinesChange} />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
           <label className="block text-sm">
@@ -66,8 +66,8 @@ const PrefixSuffix = () => {
           </textarea>
         </label>
         <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
-          <Button name="Add" onClick={addPrefixSuffix} />
-          <StatusInfo isShowing={isStatusShowing} label={`Prefix and suffix added`} />
+          <Button name="Add" handleClick={addPrefixSuffix} />
+          <StatusInfo isShowing={isStatusShowing} text={`Prefix and suffix added`} />
         </div>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">

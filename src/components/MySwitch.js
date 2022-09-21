@@ -3,11 +3,11 @@ import { Switch } from '@headlessui/react'
 
 const MySwitch = (props) => {
   const [enabled, setEnabled] = useState(props.default);
-  const {onChange} = props;
+  const {handleChange} = props;
 
   useEffect(() => {
-    onChange(enabled)
-  }, [onChange, enabled])
+    handleChange(enabled)
+  }, [handleChange, enabled]);
 
   return (
     <Switch.Group>

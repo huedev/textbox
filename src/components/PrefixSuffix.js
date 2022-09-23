@@ -1,32 +1,55 @@
 import Button from './Button';
 import MySwitch from './MySwitch';
 import StatusInfo from './StatusInfo';
-import { useState, createRef } from "react"
+import { useState } from "react"
 import { useTimeoutFn } from 'react-use'
 
 const PrefixSuffix = () => {
-  const textInput = createRef();
-  const prefixInput = createRef();
-  const suffixInput = createRef();
-
-  const [skipEmptyLines, setSkipEmptyLines] = useState(true);
+  const [formData, setFormData] = useState(
+    {
+      skipEmptyLines: true,
+      prefix: "",
+      suffix: "",
+      text: "",
+    },
+  );
   const [isStatusShowing, setIsStatusShowing] = useState(false);
   const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 5000);
 
-  function handleSkipEmptyLinesChange(value) {
-    setSkipEmptyLines(value);
+  function handleChange(event) {
+    const {name, value, type, checked} = event.target;
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value
+      }
+    });
   }
 
-  function addPrefixSuffix() {
-    const str = textInput.current.value;
-    const arr = str.split(/\r?\n/);
+  function handleHeadlessUIChange(value, name) {
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const arr = formData.text.split(/\r?\n/);
     const output = arr.map((line) => {
-      if ((skipEmptyLines && line.length) || !skipEmptyLines) {
-        return `${prefixInput.current.value}${line}${suffixInput.current.value}`;
+      if ((formData.skipEmptyLines && line.length) || !formData.skipEmptyLines) {
+        return `${formData.prefix}${line}${formData.suffix}`;
       }
       return line;
     });
-    textInput.current.value = output.join('\r\n');
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        text: output.join('\r\n')
+      }
+    });
     setIsStatusShowing(true);
     resetIsStatusShowing();
   }
@@ -35,40 +58,52 @@ const PrefixSuffix = () => {
     <main className="px-4 py-8">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold">Add Prefix &amp; Suffix</h2>
-        <div className="flex flex-row-reverse mt-6">
-          <MySwitch label="Skip blank lines" default={skipEmptyLines} handleChange={handleSkipEmptyLinesChange} />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
-          <label className="block text-sm">
-            <span className="text-slate-600 dark:text-slate-400">Prefix</span>
-            <input
-              ref={prefixInput}
-              className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-              type="text"
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-row-reverse mt-6">
+            <MySwitch
+              label="Skip blank lines"
+              handleChange={handleHeadlessUIChange}
+              name="skipEmptyLines"
+              currentValue={formData.skipEmptyLines}
+            />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+            <label className="block text-sm">
+              <span className="text-slate-600 dark:text-slate-400">Prefix</span>
+              <input
+                className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+                type="text"
+                onChange={handleChange}
+                name="prefix"
+                value={formData.prefix}
+              />
+            </label>
+            <label className="block text-sm">
+              <span className="text-slate-600 dark:text-slate-400">Suffix</span>
+              <input
+                className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+                type="text"
+                onChange={handleChange}
+                name="suffix"
+                value={formData.suffix}
+              />
+            </label>
+          </div>
+          <label className="block mt-6 text-sm">
+            <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
+            <textarea
+              className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+              spellCheck="false"
+              onChange={handleChange}
+              name="text"
+              value={formData.text}
             />
           </label>
-          <label className="block text-sm">
-            <span className="text-slate-600 dark:text-slate-400">Suffix</span>
-            <input
-              ref={suffixInput}
-              className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-              type="text"
-            />
-          </label>
-        </div>
-        <label className="block mt-6 text-sm">
-          <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
-          <textarea
-            ref={textInput}
-            className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-            spellCheck="false"
-          >
-          </textarea>
-        </label>
-        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
-          <Button name="Add" handleClick={addPrefixSuffix} />
-          <StatusInfo isShowing={isStatusShowing} text={`Prefix and suffix added`} />
-        </div>
+          <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
+            <Button name="Add" />
+            <StatusInfo isShowing={isStatusShowing} text={`Prefix and suffix added`} />
+          </div>
+        </form>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">
           Add the desired prefix at the start of each line and the desired suffix at the end of each line.

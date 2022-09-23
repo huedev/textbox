@@ -36,7 +36,7 @@ const SortList = () => {
     });
   }
 
-  function handleListboxChange(value, name) {
+  function handleHeadlessUIChange(value, name) {
     setFormData(prevFormData => {
       return {
         ...prevFormData,
@@ -171,7 +171,7 @@ const SortList = () => {
             <MyListbox
               label="Sort"
               data={options}
-              handleChange={handleListboxChange}
+              handleChange={handleHeadlessUIChange}
               name="sorting"
               currentValue={formData.sorting}
             />

@@ -1,27 +1,19 @@
-import { useState, useEffect } from 'react'
 import { Switch } from '@headlessui/react'
 
 const MySwitch = (props) => {
-  const [enabled, setEnabled] = useState(props.default);
-  const {handleChange} = props;
-
-  useEffect(() => {
-    handleChange(enabled)
-  }, [handleChange, enabled]);
-
   return (
     <Switch.Group>
       <div className="flex items-center">
         <Switch
-          checked={enabled}
-          onChange={setEnabled}
-          className={`${enabled ? 'bg-indigo-500 dark:bg-indigo-700' : 'bg-slate-400 dark:bg-slate-700'}
+          checked={props.currentValue}
+          onChange={event => props.handleChange(event, props.name)}
+          className={`${props.currentValue ? 'bg-indigo-500 dark:bg-indigo-700' : 'bg-slate-400 dark:bg-slate-700'}
             relative inline-flex h-[24px] w-[44px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
         >
           <span className="sr-only">{props.label}</span>
           <span
             aria-hidden="true"
-            className={`${enabled ? 'translate-x-5' : 'translate-x-0'}
+            className={`${props.currentValue ? 'translate-x-5' : 'translate-x-0'}
               pointer-events-none inline-block h-[20px] w-[20px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
           />
         </Switch>

@@ -34,7 +34,7 @@ const ConvertCase = () => {
     });
   }
 
-  function handleListboxChange(value, name) {
+  function handleHeadlessUIChange(value, name) {
     setFormData(prevFormData => {
       return {
         ...prevFormData,
@@ -52,7 +52,7 @@ const ConvertCase = () => {
             ...prevFormData,
             text: prevFormData.text.toUpperCase()
           }
-        })
+        });
         break;
       case "Lowercase":
         setFormData(prevFormData => {
@@ -60,7 +60,7 @@ const ConvertCase = () => {
             ...prevFormData,
             text: prevFormData.text.toLowerCase()
           }
-        })
+        });
         break;
       case "Sentence Case":
         setFormData(prevFormData => {
@@ -68,7 +68,7 @@ const ConvertCase = () => {
             ...prevFormData,
             text: sentenceCase(prevFormData.text)
           }
-        })
+        });
         break;
       case "Start Case":
         setFormData(prevFormData => {
@@ -76,7 +76,7 @@ const ConvertCase = () => {
             ...prevFormData,
             text: startCase(prevFormData.text)
           }
-        })
+        });
         break;
       case "Invert Case":
         setFormData(prevFormData => {
@@ -84,7 +84,7 @@ const ConvertCase = () => {
             ...prevFormData,
             text: invertCase(prevFormData.text)
           }
-        })
+        });
         break;
       case "Random Case":
         setFormData(prevFormData => {
@@ -92,7 +92,7 @@ const ConvertCase = () => {
             ...prevFormData,
             text: randomizeCase(prevFormData.text)
           }
-        })
+        });
         break;
       default:
         break;
@@ -156,7 +156,7 @@ const ConvertCase = () => {
             <MyListbox
               label="Conversion"
               data={options}
-              handleChange={handleListboxChange}
+              handleChange={handleHeadlessUIChange}
               name="conversion"
               currentValue={formData.conversion}
             />

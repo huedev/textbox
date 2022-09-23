@@ -10,20 +10,32 @@ const Stat = (props) => {
 }
 
 const WordCount = () => {
-  const [words, setWords] = useState(0);
-  const [characters, setCharacters] = useState(0);
-  const [charactersWithoutSpaces, setcharactersWithoutSpaces] = useState(0);
-  const [sentences, setSentences] = useState(0);
-  const [paragraphs, setParagraphs] = useState(0);
-  const [lines, setLines] = useState(1);
+  const [formData, setFormData] = useState(
+    {
+      text: "",
+      words: 0,
+      characters: 0,
+      charactersWithoutSpaces: 0,
+      sentences: 0,
+      paragraphs: 0,
+      lines: 1,
+    },
+  );
 
-  function populateStats(event) {
-    setWords(getWords(event.target.value));
-    setCharacters(getCharacters(event.target.value));
-    setcharactersWithoutSpaces(getcharactersWithoutSpaces(event.target.value));
-    setSentences(getSentences(event.target.value));
-    setParagraphs(getParagraphs(event.target.value));
-    setLines(getLines(event.target.value));
+  function handleChange(event) {
+    const {name, value, type, checked} = event.target;
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value,
+        words: getWords(value),
+        characters: getCharacters(value),
+        charactersWithoutSpaces: getcharactersWithoutSpaces(value),
+        sentences: getSentences(value),
+        paragraphs: getParagraphs(value),
+        lines: getLines(value),
+      }
+    });
   }
 
   function getWords(str) {
@@ -71,17 +83,19 @@ const WordCount = () => {
           <textarea
             className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
             spellCheck="false"
-            onChange={populateStats}
+            onChange={handleChange}
+            name="text"
+            value={formData.text}
           >
           </textarea>
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-200 dark:bg-slate-800 shadow-inner rounded-lg p-4 mt-4">
-          <Stat label="Words" data={words} />
-          <Stat label="Sentences" data={sentences} />
-          <Stat label="Characters" data={characters} />
-          <Stat label="Characters (without spaces)" data={charactersWithoutSpaces} />
-          <Stat label="Paragraphs" data={paragraphs} />
-          <Stat label="Lines" data={lines} />
+          <Stat label="Words" data={formData.words} />
+          <Stat label="Sentences" data={formData.sentences} />
+          <Stat label="Characters" data={formData.characters} />
+          <Stat label="Characters (without spaces)" data={formData.charactersWithoutSpaces} />
+          <Stat label="Paragraphs" data={formData.paragraphs} />
+          <Stat label="Lines" data={formData.lines} />
         </div>
       </div>
     </main>

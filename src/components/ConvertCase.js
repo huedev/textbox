@@ -15,7 +15,10 @@ const ConvertCase = () => {
   ];
 
   const [formData, setFormData] = useState(
-    { conversion: options[0], text: "" },
+    {
+      conversion: options[0],
+      text: "",
+    },
   );
   const [lastConversionApplied, setLastConversionApplied] = useState(options[0]);
   const [isStatusShowing, setIsStatusShowing] = useState(false);

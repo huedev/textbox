@@ -1,11 +1,10 @@
 import MyListbox from './MyListbox'
 import Button from './Button';
 import StatusInfo from './StatusInfo';
-import { useState, createRef } from "react"
+import { useState } from "react"
 import { useTimeoutFn } from 'react-use'
 
 const SortList = () => {
-  const textInput = createRef();
   const options = [
     "Natural (Ascending)",
     "Natural (Descending)",
@@ -17,45 +16,106 @@ const SortList = () => {
     "Random Order",
   ];
 
-  const [sorting, setSorting] = useState(options[0]);
+  const [formData, setFormData] = useState(
+    {
+      sorting: options[0],
+      text: "",
+    },
+  );
   const [lastSortApplied, setLastSortApplied] = useState(options[0]);
   const [isStatusShowing, setIsStatusShowing] = useState(false);
   const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 5000);
 
-  function handleSortChange(option) {
-    setSorting(option);
+  function handleChange(event) {
+    const {name, value, type, checked} = event.target;
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value
+      }
+    });
   }
 
-  function sort() {
-    switch (sorting) {
+  function handleListboxChange(value, name) {
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    switch (formData.sorting) {
       case "Natural (Ascending)":
-        textInput.current.value = sortNatural(textInput.current.value, false);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortNatural(prevFormData.text, false)
+          }
+        })
         break;
       case "Natural (Descending)":
-        textInput.current.value = sortNatural(textInput.current.value, true);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortNatural(prevFormData.text, true)
+          }
+        })
         break;
       case "Alphabetical (Ascending)":
-        textInput.current.value = sortAlphabetical(textInput.current.value, false);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortAlphabetical(prevFormData.text, false)
+          }
+        })
         break;
       case "Alphabetical (Descending)":
-        textInput.current.value = sortAlphabetical(textInput.current.value, true);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortAlphabetical(prevFormData.text, true)
+          }
+        })
         break;
       case "Length (Ascending)":
-        textInput.current.value = sortLength(textInput.current.value, false);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortLength(prevFormData.text, false)
+          }
+        })
         break;
       case "Length (Descending)":
-        textInput.current.value = sortLength(textInput.current.value, true);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortLength(prevFormData.text, true)
+          }
+        })
         break;
       case "Reverse Order":
-        textInput.current.value = sortReverse(textInput.current.value);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortReverse(prevFormData.text)
+          }
+        })
         break;
       case "Random Order":
-        textInput.current.value = sortRandom(textInput.current.value);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sortRandom(prevFormData.text)
+          }
+        })
         break;
       default:
         break;
     }
-    setLastSortApplied(sorting);
+    setLastSortApplied(formData.sorting);
     setIsStatusShowing(true);
     resetIsStatusShowing();
   }
@@ -106,22 +166,31 @@ const SortList = () => {
     <main className="px-4 py-8">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold">Sort List</h2>
-        <div className="flex mt-6">
-          <MyListbox label="Sort" data={options} handleChange={handleSortChange} />
-        </div>
-        <label className="block mt-6 text-sm">
-          <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
-          <textarea
-            ref={textInput}
-            className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-            spellCheck="false"
-          >
-          </textarea>
-        </label>
-        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
-          <Button name="Sort" handleClick={sort} />
-          <StatusInfo isShowing={isStatusShowing} text={`Sorted by ${lastSortApplied}`} />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="flex mt-6">
+            <MyListbox
+              label="Sort"
+              data={options}
+              handleChange={handleListboxChange}
+              name="sorting"
+              currentValue={formData.sorting}
+            />
+          </div>
+          <label className="block mt-6 text-sm">
+            <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
+            <textarea
+              className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+              spellCheck="false"
+              onChange={handleChange}
+              name="text"
+              value={formData.text}
+            />
+          </label>
+          <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
+            <Button name="Sort" />
+            <StatusInfo isShowing={isStatusShowing} text={`Sorted by ${lastSortApplied}`} />
+          </div>
+        </form>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several sorting methods to choose from:</p>
         <ul className="list-disc list-inside leading-7 -indent-4 ml-4 mt-6">

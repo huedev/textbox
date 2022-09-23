@@ -1,11 +1,10 @@
 import MyListbox from './MyListbox'
 import Button from './Button';
 import StatusInfo from './StatusInfo';
-import { useState, createRef } from "react"
+import { useState } from 'react'
 import { useTimeoutFn } from 'react-use'
 
 const ConvertCase = () => {
-  const textInput = createRef();
   const options = [
     "Uppercase",
     "Lowercase",
@@ -15,39 +14,87 @@ const ConvertCase = () => {
     "Random Case",
   ];
 
-  const [conversion, setConversion] = useState(options[0]);
+  const [formData, setFormData] = useState(
+    { conversion: options[0], text: "" },
+  );
   const [lastConversionApplied, setLastConversionApplied] = useState(options[0]);
   const [isStatusShowing, setIsStatusShowing] = useState(false);
   const [, , resetIsStatusShowing] = useTimeoutFn(() => setIsStatusShowing(false), 5000);
 
-  function handleConversionChange(option) {
-    setConversion(option);
+  function handleChange(event) {
+    const {name, value, type, checked} = event.target;
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value
+      }
+    });
   }
 
-  function convert() {
-    switch (conversion) {
+  function handleListboxChange(value, name) {
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: value
+      }
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    switch (formData.conversion) {
       case "Uppercase":
-        textInput.current.value = textInput.current.value.toUpperCase();
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: prevFormData.text.toUpperCase()
+          }
+        })
         break;
       case "Lowercase":
-        textInput.current.value = textInput.current.value.toLowerCase();
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: prevFormData.text.toLowerCase()
+          }
+        })
         break;
       case "Sentence Case":
-        textInput.current.value = sentenceCase(textInput.current.value);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: sentenceCase(prevFormData.text)
+          }
+        })
         break;
       case "Start Case":
-        textInput.current.value = startCase(textInput.current.value);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: startCase(prevFormData.text)
+          }
+        })
         break;
       case "Invert Case":
-        textInput.current.value = invertCase(textInput.current.value);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: invertCase(prevFormData.text)
+          }
+        })
         break;
       case "Random Case":
-        textInput.current.value = randomizeCase(textInput.current.value);
+        setFormData(prevFormData => {
+          return {
+            ...prevFormData,
+            text: randomizeCase(prevFormData.text)
+          }
+        })
         break;
       default:
         break;
     }
-    setLastConversionApplied(conversion);
+    setLastConversionApplied(formData.conversion);
     setIsStatusShowing(true);
     resetIsStatusShowing();
   }
@@ -101,22 +148,31 @@ const ConvertCase = () => {
     <main className="px-4 py-8">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold">Convert Case</h2>
-        <div className="flex mt-6">
-          <MyListbox label="Conversion" data={options} handleChange={handleConversionChange} />
-        </div>
-        <label className="block mt-6 text-sm">
-          <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
-          <textarea
-            ref={textInput}
-            className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-            spellCheck="false"
-          >
-          </textarea>
-        </label>
-        <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
-          <Button name="Convert" handleClick={convert} />
-          <StatusInfo isShowing={isStatusShowing} text={`Converted to ${lastConversionApplied}`} />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="flex mt-6">
+            <MyListbox
+              label="Conversion"
+              data={options}
+              handleChange={handleListboxChange}
+              name="conversion"
+              currentValue={formData.conversion}
+            />
+          </div>
+          <label className="block mt-6 text-sm">
+            <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
+            <textarea
+              className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+              spellCheck="false"
+              onChange={handleChange}
+              name="text"
+              value={formData.text}
+            />
+          </label>
+          <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
+            <Button name="Convert" />
+            <StatusInfo isShowing={isStatusShowing} text={`Converted to ${lastConversionApplied}`} />
+          </div>
+        </form>
         <h3 className="text-xl font-semibold mt-16">About</h3>
         <p className="leading-7 mt-6">There are several case conversion styles to choose from:</p>
         <ul className="list-disc list-inside leading-7 -indent-4 ml-4 mt-6">

@@ -1,24 +1,21 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const MyListbox = (props) => {
-  const [selected, setSelected] = useState(props.data[0]);
-  const {handleChange} = props;
-
-  useEffect(() => {
-    handleChange(selected)
-  }, [handleChange, selected]);
-
   return (
     <div className="w-72">
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox
+        value={props.currentValue}
+        onChange={event => props.handleChange(event, props.name)}
+        name={props.name}
+      >
         <Listbox.Label className="inline-block text-slate-600 dark:text-slate-400 text-sm">
           {props.label}
         </Listbox.Label>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg bg-white dark:bg-slate-800 py-2 pl-3 pr-10 text-left shadow focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 text-sm">
-            <span className="block truncate">{selected}</span>
+            <span className="block truncate">{props.currentValue}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-slate-400 dark:text-slate-500"

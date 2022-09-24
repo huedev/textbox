@@ -102,7 +102,7 @@ const PrefixSuffix = () => {
             />
           </label>
           <div className="flex flex-row-reverse items-center space-x-6 space-x-reverse mt-4">
-            <Button name="Add" />
+            <Button name="Replace" />
             <StatusInfo
               isShowing={isStatusShowing}
               text={replacementCount > 0 ? `Made ${replacementCount} replacements` : "No matches found"}

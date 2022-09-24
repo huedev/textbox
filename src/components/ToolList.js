@@ -1,5 +1,5 @@
 import ToolListItem from "./ToolListItem"
-import { ArrowsUpDownIcon, ArrowsRightLeftIcon, ArrowPathIcon, CalculatorIcon } from "@heroicons/react/24/outline"
+import { ArrowsUpDownIcon, ArrowsRightLeftIcon, ArrowPathIcon, CalculatorIcon, DocumentMagnifyingGlassIcon } from "@heroicons/react/24/outline"
 
 const ToolList = () => {
   return (
@@ -18,6 +18,12 @@ const ToolList = () => {
             name="Convert Case"
             icon={<ArrowPathIcon />}
             description="Convert text letter case to several different formats."
+          />
+          <ToolListItem
+            destination="/find-replace"
+            name="Find &amp; Replace"
+            icon={<DocumentMagnifyingGlassIcon />}
+            description="Replace all instances of a string with a different string."
           />
           <ToolListItem
             destination="/word-count"

@@ -15,9 +15,9 @@ const Header = () => {
           </Link>
           <button onClick={() => setTheme(currentTheme)} className="hover:text-indigo-100 dark:hover:text-slate-300">
             {currentTheme === "light" ? (
-              <MoonIcon className="w-6 h-6" />
-            ) : (
               <SunIcon className="w-6 h-6" />
+            ) : (
+              <MoonIcon className="w-6 h-6" />
             )}
           </button>
         </div>

@@ -1,5 +1,5 @@
 import ToolListItem from "./ToolListItem"
-import { ArrowsUpDownIcon, ArrowsRightLeftIcon, ArrowPathIcon, CalculatorIcon, DocumentMagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import { ListBulletIcon, ViewColumnsIcon, ArrowsRightLeftIcon, ArrowPathIcon, CalculatorIcon, DocumentMagnifyingGlassIcon } from "@heroicons/react/24/outline"
 
 const ToolList = () => {
   return (
@@ -10,8 +10,14 @@ const ToolList = () => {
           <ToolListItem
             destination="/sort-list"
             name="Sort List"
-            icon={<ArrowsUpDownIcon />}
+            icon={<ListBulletIcon />}
             description="Sort items in a list using various sorting methods."
+          />
+          <ToolListItem
+            destination="/sort-column"
+            name="Sort Column"
+            icon={<ViewColumnsIcon />}
+            description="Sort items by column in a delimited list using various sorting methods."
           />
           <ToolListItem
             destination="/convert-case"

@@ -113,7 +113,7 @@ const PrefixSuffix = () => {
         <p className="leading-7 mt-6">
           Find all instances of a string and replace them with a different string.
         </p>
-        <h3 className="text-xl font-semibold mt-8">Examples</h3>
+        <h3 className="text-xl font-semibold mt-8">Match case</h3>
         <p className="leading-7 mt-6">
           If <strong className="font-semibold">Match case</strong> is enabled, all occurances of the string are replaced regardless of the letter case.<br />
           Using find: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">h</code> and replace: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">X</code>.

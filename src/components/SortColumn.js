@@ -267,24 +267,25 @@ const SortList = () => {
           <li><strong className="font-semibold">Reverse Order</strong> - A sorting method that simply reverses the order of the list.</li>
           <li><strong className="font-semibold">Random Order</strong> - A sorting method that randomly shuffles the order of the list. Just for fun!</li>
         </ul>
+        <h3 className="text-xl font-semibold mt-8">Delimiter</h3>
+        <p className="leading-7 mt-6">
+          A <strong className="font-semibold">delimiter</strong> is a character or string that separates each column.<br />
+          In the example below, comma <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">,</code> is the delimiter.
+        </p>
+        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
+          Column 1,Column 2,Column 3<br />
+          Column 1,Column 2,Column 3<br />
+          Column 1,Column 2,Column 3
+        </pre>
         <h3 className="text-xl font-semibold mt-8">Examples</h3>
-        <p className="leading-7 mt-6"><strong className="font-semibold">Natural</strong></p>
+        <p className="leading-7 mt-6">
+          Sort a list of names by last name.<br />
+          Sort is <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">Natural (Ascending)</code>, column number is <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">2</code>, delimiter is space (<code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap"> </code>).
+        </p>
         <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
-          A1<br />
-          A2<br />
-          A10
-        </pre>
-        <p className="leading-7 mt-6"><strong className="font-semibold">Alphabetical</strong></p>
-        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
-          A1<br />
-          A10<br />
-          A2
-        </pre>
-        <p className="leading-7 mt-6"><strong className="font-semibold">Length</strong></p>
-        <pre className="bg-white dark:bg-slate-800 rounded-lg p-4 whitespace-pre-wrap">
-          A<br />
-          AA<br />
-          AAA
+          John Doe<br />
+          Alice Margatroid<br />
+          Jane Smith
         </pre>
       </div>
     </main>

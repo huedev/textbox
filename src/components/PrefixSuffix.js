@@ -108,10 +108,10 @@ const PrefixSuffix = () => {
         <p className="leading-7 mt-6">
           Add the desired prefix at the start of each line and the desired suffix at the end of each line.
         </p>
-        <h3 className="text-xl font-semibold mt-8">Examples</h3>
+        <h3 className="text-xl font-semibold mt-8">Skip blank lines</h3>
         <p className="leading-7 mt-6">
           If <strong className="font-semibold">Skip blank lines</strong> is enabled, the prefix and suffix will only be added to lines with text.<br />
-          Using prefix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;li&gt;</code> and suffix: <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;/li&gt;</code>.
+          In the example below, prefix is <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;li&gt;</code> and suffix is <code className="bg-white dark:bg-slate-800 rounded-lg px-1 whitespace-pre-wrap">&lt;/li&gt;</code>.
         </p>
         <p className="leading-7 mt-6">
           Before:

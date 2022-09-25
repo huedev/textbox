@@ -10,7 +10,7 @@ const MyListbox = (props) => {
         onChange={event => props.handleChange(event, props.name)}
         name={props.name}
       >
-        <Listbox.Label className="inline-block text-slate-600 dark:text-slate-400 text-sm">
+        <Listbox.Label className="block text-slate-600 dark:text-slate-400 text-sm">
           {props.label}
         </Listbox.Label>
         <div className="relative mt-1">

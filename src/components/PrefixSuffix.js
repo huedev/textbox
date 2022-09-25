@@ -38,7 +38,7 @@ const PrefixSuffix = () => {
   function handleSubmit(event) {
     event.preventDefault();
     const arr = formData.text.split(/\r?\n/);
-    const output = arr.map((line) => {
+    const output = arr.map(line => {
       if ((formData.skipEmptyLines && line.length) || !formData.skipEmptyLines) {
         return `${formData.prefix}${line}${formData.suffix}`;
       }

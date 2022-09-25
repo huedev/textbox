@@ -78,16 +78,15 @@ const WordCount = () => {
     <main className="px-4 py-8">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-2xl font-semibold">Word Count</h2>
-        <label className="block mt-6 text-sm">
-          <span className="text-slate-600 dark:text-slate-400">Input</span>
+        <label className="block mt-6">
+          <span className="block text-slate-600 dark:text-slate-400 text-sm">Input/Output</span>
           <textarea
-            className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+            className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
             spellCheck="false"
             onChange={handleChange}
             name="text"
             value={formData.text}
-          >
-          </textarea>
+          />
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 bg-slate-200 dark:bg-slate-800 shadow-inner rounded-lg p-4 mt-4">
           <Stat label="Words" data={formData.words} />

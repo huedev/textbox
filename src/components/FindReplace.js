@@ -70,20 +70,20 @@ const PrefixSuffix = () => {
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
-            <label className="block text-sm">
-              <span className="text-slate-600 dark:text-slate-400">Find text</span>
+          <label>
+              <span className="block text-slate-600 dark:text-slate-400 text-sm">Find text</span>
               <input
-                className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
                 type="text"
                 onChange={handleChange}
                 name="find"
                 value={formData.find}
               />
             </label>
-            <label className="block text-sm">
-              <span className="text-slate-600 dark:text-slate-400">Replace with</span>
+            <label>
+              <span className="block text-slate-600 dark:text-slate-400 text-sm">Replace with</span>
               <input
-                className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-2 mt-1 block shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
                 type="text"
                 onChange={handleChange}
                 name="replace"
@@ -91,10 +91,10 @@ const PrefixSuffix = () => {
               />
             </label>
           </div>
-          <label className="block mt-6 text-sm">
-            <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
+          <label className="block mt-6">
+            <span className="block text-slate-600 dark:text-slate-400 text-sm">Input/Output</span>
             <textarea
-              className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+              className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
               spellCheck="false"
               onChange={handleChange}
               name="text"

@@ -243,10 +243,10 @@ const SortList = () => {
               />
             </label>
           </div>
-          <label className="block mt-6 text-sm">
-            <span className="text-slate-600 dark:text-slate-400">Input/Output</span>
+          <label className="block mt-6">
+            <span className="block text-slate-600 dark:text-slate-400 text-sm">Input/Output</span>
             <textarea
-              className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+              className="w-full h-80 p-2 mt-1 shadow bg-white dark:bg-slate-800 border border-slate-300 dark:border-transparent dark:border-t-white/5 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
               spellCheck="false"
               onChange={handleChange}
               name="text"

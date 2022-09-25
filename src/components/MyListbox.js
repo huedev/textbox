@@ -4,7 +4,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 const MyListbox = (props) => {
   return (
-    <div className="w-72">
+    <div className="w-full sm:w-72">
       <Listbox
         value={props.currentValue}
         onChange={event => props.handleChange(event, props.name)}

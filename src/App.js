@@ -8,6 +8,7 @@ import ConvertCase from './components/ConvertCase'
 import FindReplace from './components/FindReplace'
 import WordCount from './components/WordCount'
 import PrefixSuffix from './components/PrefixSuffix'
+import LineNumbers from './components/LineNumbers'
 import About from './components/About'
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/find-replace' element={<FindReplace />} />
         <Route path='/word-count' element={<WordCount />} />
         <Route path='/prefix-suffix' element={<PrefixSuffix />} />
+        <Route path='/line-numbers' element={<LineNumbers />} />
         <Route path='/about' element={<About />} />
       </Routes>
       <Footer />

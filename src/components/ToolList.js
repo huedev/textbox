@@ -1,5 +1,5 @@
 import ToolListItem from "./ToolListItem"
-import { ListBulletIcon, ViewColumnsIcon, ArrowsRightLeftIcon, ArrowPathIcon, CalculatorIcon, DocumentMagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import { ListBulletIcon, ViewColumnsIcon, ArrowsRightLeftIcon, ArrowPathIcon, CalculatorIcon, DocumentMagnifyingGlassIcon, BarsArrowDownIcon } from "@heroicons/react/24/outline"
 
 const ToolList = () => {
   return (
@@ -33,6 +33,12 @@ const ToolList = () => {
             name="Add Prefix &amp; Suffix"
             icon={<ArrowsRightLeftIcon />}
             description="Add characters to the start and/or end of each line."
+          />
+          <ToolListItem
+            destination="/line-numbers"
+            name="Add Line Numbers"
+            icon={<BarsArrowDownIcon />}
+            description="Add sequential numbers or letters at the beginning of each line."
           />
           <ToolListItem
             destination="/sort-column"
